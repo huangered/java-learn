@@ -16,4 +16,6 @@ include 'services:webservice'
 */
 
 rootProject.name = 'java-example'
-include 'mall-bank'
+include 'core'
+include 'mall'
+include 'bank'

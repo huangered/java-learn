@@ -1,7 +1,6 @@
 package com.yih.trans.schedule;
 
 import com.yih.trans.entity.BankReceipt;
-import com.yih.trans.repo.BankReceiptRepo;
 import com.yih.trans.entity.MallReceipt;
 import com.yih.trans.repo.MallReceiptRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +25,6 @@ public class ScheduledTasks {
     @Autowired
     MallReceiptRepo repo;
 
-    @Autowired
-    BankReceiptRepo bankRepo;
-
     @Scheduled(fixedRate = 5000)
     public void sendMallReceipt() {
         List<MallReceipt> all = repo.findAll();
@@ -39,21 +35,4 @@ public class ScheduledTasks {
         }
     }
 
-    @Scheduled(fixedRate = 5000)
-    public void sendBankReceipt() {
-        List<BankReceipt> all = bankRepo.findAll();
-        for (BankReceipt record : all) {
-            if (record.getStatus().equalsIgnoreCase("start")) {
-                ListenableFuture<SendResult> d = template.send("mall", record.toJson());
-
-                d.addCallback(result -> {
-                    record.setStatus("finish");
-                    bankRepo.save(record);
-                }, ex -> {
-
-                });
-
-            }
-        }
-    }
 }
