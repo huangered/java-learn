@@ -16,6 +16,11 @@ include 'services:webservice'
 */
 
 rootProject.name = 'java-example'
-include 'core'
-include 'mall'
-include 'bank'
+include 'network:bank'
+include 'network:mall'
+include 'network:core'
+include 'network:util'
+
+include 'big-data:hadoop'
+include 'big-data:hbase'
+include 'big-data:spark'

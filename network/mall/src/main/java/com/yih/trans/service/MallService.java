@@ -44,4 +44,23 @@ public class MallService {
             mallReceiptRepo.save(receipt.get());
         }
     }
+
+    @Transactional//(rollbackOn = Exception.class)
+    public void test()  {
+
+        Long userId = 1L;
+        Long money = 100L;
+        MallRecord mallRecord = new MallRecord();
+        mallRecord.setUserId(userId);
+        mallRecord.setMoney(money);
+
+        MallReceipt mallReceipt = new MallReceipt();
+        mallReceipt.setUserId(userId);
+        mallReceipt.setMoney(money);
+        mallReceipt.setStatus("start");
+
+        mallRepo.save(mallRecord);
+
+        throw new RuntimeException("htest");
+    }
 }

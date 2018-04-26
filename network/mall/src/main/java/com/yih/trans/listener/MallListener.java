@@ -16,9 +16,6 @@ public class MallListener {
 
     @KafkaListener(topics = "mall", groupId = "test")
     public void listen(String record) {
-        System.out.println("--------");
-        System.out.println(record);
-
         ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
         try {
             // 尝试从JSON中读取对象

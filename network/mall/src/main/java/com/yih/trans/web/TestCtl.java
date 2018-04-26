@@ -14,4 +14,9 @@ public class TestCtl {
     public void test() {
         service.add(1L, 100L);
     }
+
+    @GetMapping("/test2")
+    public void test2() throws Exception {
+        service.test();
+    }
 }

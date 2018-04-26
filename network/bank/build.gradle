@@ -24,7 +24,8 @@ repositories {
 }
 
 dependencies {
-    compile project (":core")
+    compile project (":network:core")
+
     compile("org.springframework.boot:spring-boot-starter:2.0.0.RELEASE")
     compile("org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE")
     compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.0.0.RELEASE'
@@ -35,4 +36,4 @@ dependencies {
 
 }
 
-mainClassName = 'com.yih.trans.Mall'
+mainClassName = 'com.yih.trans.Bank'
