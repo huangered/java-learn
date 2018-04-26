@@ -24,3 +24,5 @@ include 'network:util'
 include 'big-data:hadoop'
 include 'big-data:hbase'
 include 'big-data:spark'
+
+include 'chasm'
